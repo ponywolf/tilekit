@@ -65,17 +65,15 @@ function M.load(filename, tileset)
 
   local animations = data.map.animations or {}
   local sequence = {}
-  if #animations then
-    for i = 1, #animations do
-      local animation = animations[i]
-      local index = animation.idx
-      sequence[index] = {
-        name = "default",
-        frames = animation.frames,
-        time = animation.rate * #animation.frames,
-        loopCount = 0,
-      }
-    end
+  for i = 1, #animations do
+    local animation = animations[i]
+    local index = animation.idx
+    sequence[index] = {
+      name = "default",
+      frames = animation.frames,
+      time = animation.rate * #animation.frames,
+      loopCount = 0,
+    }
   end
 
   -- render data
@@ -124,8 +122,6 @@ function M.load(filename, tileset)
 
   function instance.getIds(id) -- get all objects with id
     local found = {}
-          found[#found+1] = objects[i]
-        end
     for i = 1, #objects do
       if objects[i].id == id then
         found[#found+1] = objects[i]
