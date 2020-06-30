@@ -30,8 +30,13 @@ end
 
 function M.load(filename, tileset)
   -- load data
-  filename = system.pathForFile(filename, system.ResourceDirectory)
-  local data = json.decodeFile(filename)
+  local data
+  if type(filename) == "string" then
+    filename = system.pathForFile(filename, system.ResourceDirectory)
+    data = json.decodeFile(filename)
+  else
+    data = filename
+  end
   if not data then
     print("ERROR: File not found")
   end
@@ -58,7 +63,7 @@ function M.load(filename, tileset)
 
   -- animations
 
-  local animations = data.map.animations
+  local animations = data.map.animations or {}
   local sequence = {}
   if #animations then
     for i = 1, #animations do
@@ -75,7 +80,7 @@ function M.load(filename, tileset)
 
   -- render data
   local instance = display.newGroup()
-  local tiles = data.map.data
+  local tiles = data.map.data or {}
   for j = 0, mh-1 do
     for i = 0, mw-1 do
       local index = j * mw + i + 1
@@ -110,22 +115,20 @@ function M.load(filename, tileset)
   end
 
   function instance.getObject(name) -- get first object with name
-    if #objects then
-      for i = 1, #objects do
-        if objects[i].name == name then
-          return objects[i]
-        end
+    for i = 1, #objects do
+      if objects[i].name == name then
+        return objects[i]
       end
-    end	
+    end
   end
 
   function instance.getIds(id) -- get all objects with id
     local found = {}
-    if #objects then
-      for i = 1, #objects do
-        if objects[i].id == id then
           found[#found+1] = objects[i]
         end
+    for i = 1, #objects do
+      if objects[i].id == id then
+        found[#found+1] = objects[i]
       end
     end
     return found
@@ -138,12 +141,11 @@ function M.load(filename, tileset)
   local tags = data.map.tags or {}
   function instance.tags(tile) -- get tags from tile #
     local found = {}
-    if #tags then
-      for i = 1, #tags do
-        for j = 1, #tags[i].tiles do
-          if tags[i].tiles[j] == tile then
-            found[tags[i].label] = true -- set that tag to true
-          end
+    for i = 1, #tags do
+      local tiles = tags[i].tiles or {}
+      for j = 1, #tiles do
+        if tiles[j] == tile then
+          found[tags[i].label] = true -- set that tag to true
         end
       end
     end
