@@ -49,7 +49,7 @@ map.tile(x,y) returns the tile number at a map x,y
 -- find a tile number at x,y
 local tile = map.tile(10,10)
 ```
-#### map.tile(x,y)
+#### map.tag(tile)
 
 map.tag(tile) returns the tags of a tile number
 
@@ -63,7 +63,7 @@ end
 You can chain those functions together as well
 
 ```
-if map.tags(map.tile(10,10)).wall thern
+if map.tags(map.tile(10,10)).wall then
   print ("The tile at 10,10 is a wall")
 end
 ```
