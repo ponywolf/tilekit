@@ -1,7 +1,7 @@
 # TileKit for Solar2D
 *tilekit* is a simple [TileKit](https://rxi.itch.io/tilekit) loader for [Solar2D](http://solar2d.com/) (formerly CoronaSDK)
 
-**TileKit for Solar2D** loads a TileKit map as a Solar2D display object with a few helper functions. TileKit is unique because it uses a pattern matching system to decorate a map instead of placing each individual tile. Future versions of this library will include functions for decorating random maps with TileKit's ability to export rulesets as lua code.
+**TileKit for Solar2D** loads a TileKit map as a Solar2D display object with a few helper functions. TileKit is unique because it uses a pattern matching system to decorate a map instead of placing each individual tile. Future versions of this library will include functions for decorating random maps with TileKit's ability to export rule sets as lua code.
 
 ![JSON via TileKit](https://img.itch.zone/aW1nLzM3MzM0ODYuZ2lm/original/0jfMfV.gif)
 
