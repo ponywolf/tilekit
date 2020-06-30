@@ -1,5 +1,5 @@
 # TileKit for Solar2D
-*tilekit* is a simple [TileKit](https://rxi.itch.io/tilekit) loader for [Solar2D](http://solar2d.com/)
+*tilekit* is a simple [TileKit](https://rxi.itch.io/tilekit) loader for [Solar2D](http://solar2d.com/) (formerly CoronaSDK)
 
 ![JSON via TileKit](https://img.itch.zone/aW1nLzM3MzM1MjkucG5n/original/NxjIjz.png)
 
@@ -67,3 +67,7 @@ if map.tags(map.tile(10,10)).wall then
   print ("The tile at 10,10 is a wall")
 end
 ```
+
+#### map.data
+
+A decoded table of the original data is available at map.data
