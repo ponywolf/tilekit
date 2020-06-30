@@ -98,7 +98,7 @@ function M.load(filename, tileset)
     end
   end
 
-  local objects = data.map.objects
+  local objects = data.map.objects or {}
   function instance:getObjects(name) -- get all objects with name
     local found = {}
     for i = 1, #objects do
@@ -110,18 +110,22 @@ function M.load(filename, tileset)
   end
 
   function instance.getObject(name) -- get first object with name
-    for i = 1, #objects do
-      if objects[i].name == name then
-        return objects[i]
+    if #objects then
+      for i = 1, #objects do
+        if objects[i].name == name then
+          return objects[i]
+        end
       end
-    end
+    end	
   end
 
   function instance.getIds(id) -- get all objects with id
     local found = {}
-    for i = 1, #objects do
-      if objects[i].id == id then
-        found[#found+1] = objects[i]
+    if #objects then
+      for i = 1, #objects do
+        if objects[i].id == id then
+          found[#found+1] = objects[i]
+        end
       end
     end
     return found
@@ -131,8 +135,8 @@ function M.load(filename, tileset)
     return tiles[y * mw + x + 1]
   end
 
-  local tags = data.map.tags
-  function instance.tag(tile) -- get tags from tile #
+  local tags = data.map.tags or {}
+  function instance.tags(tile) -- get tags from tile #
     local found = {}
     if #tags then
       for i = 1, #tags do
