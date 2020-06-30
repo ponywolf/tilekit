@@ -3,7 +3,11 @@
 
 ![JSON via TileKit](https://img.itch.zone/aW1nLzM3MzM1MjkucG5n/original/NxjIjz.png)
 
-In about 675 lines of code, **ponytiled** loads a sub-set of Tiled layers, tilesets and image collections. Built in plugin hooks and extensions make it easy to add support for many custom object types.
+**TileKit for Solar2D** loads a TileKit map as a Solar2D display object with a few helper functions. TileKit is unique because it uses a pattern matching system to decorate a map instead of placing each individual tile. Future versions of this library will include functions for decorating random maps with TileKit's ability to export rulesets as lua code.
+
+![JSON via TileKit](https://img.itch.zone/aW1nLzM3MzM0ODYuZ2lm/original/0jfMfV.gif)
+
+### Features
 
 - [x] Loads .JSON exports from [TileKit](https://rxi.itch.io/tilekit)
 - [x] Basic animated tiles
